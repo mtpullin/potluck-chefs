@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get('/index',(req,res) => {
+router.get('/index', (req,res) => {
     var i=[{
         id:1
     },
@@ -10,7 +10,7 @@ router.get('/index',(req,res) => {
     {
         id:3
     }];
-    res.render('index', {id:i[2]})
+    res.render('index', {id:i})
 })
 router.get('/testView',(req,res) => {
     res.render('testView', {testView:"Test Index"})
