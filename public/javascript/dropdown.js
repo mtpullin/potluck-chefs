@@ -3,9 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     M.AutoInit();
   
     var options = {
-      fullWidth: true,
-      indicators: true
+        hover:true
     };
-    var elems = document.querySelector('.carousel.no-autoinit');
+    var elems = document.querySelector('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, options);
   })
