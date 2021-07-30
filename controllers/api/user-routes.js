@@ -13,7 +13,7 @@ router.post('/login', Auth, (req,res)=> {
             return;
         }
 
-        const validPass = dbUserData.checkpass(req.body.password)
+        const validPass = dbUserData.checkPass(req.body.password)
 
         if(!validPass) {
             res.status(400).json({message: 'incorrect password'})
@@ -39,3 +39,9 @@ router.post('/logout', Auth, (req,res)=> {
         res.status(404).end()
     }
 })
+
+router.get('/login',(req,res) => {
+    res.render('login', {login:"login page"})
+})
+
+module.exports = router;
