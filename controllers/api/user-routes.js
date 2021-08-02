@@ -40,8 +40,5 @@ router.post('/logout', Auth, (req,res)=> {
     }
 })
 
-router.get('/login',(req,res) => {
-    res.render('login', {login:"login page"})
-})
 
 module.exports = router;
