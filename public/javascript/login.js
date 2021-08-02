@@ -41,7 +41,7 @@ async function signupForm(event) {
             headers: {'Content-type':'application/json'}
         })
         if(response.ok){
-            document.location.replace('/')
+            document.location.replace('/index')
         } else {
             alert(response.statusText)
         }
