@@ -1,13 +1,31 @@
+
+<div id='ingredient-container' class=''>
+    <li style='list-style:none'>
+        <div class='collapsible-header'>
+            Ingredients
+        </div>
+        <div id="component" class='collapsible-body'>
+        </div>
+    </li>
+
+</div>
 <div>
-    <div class="input-field">
-        <img class="addRecipe-icon prefix" src="/images/icons/harvest.svg"></img>
-        <input placeholder="Ingredients" id="recipe_ingredient{{id}}" type="text" class="validate">
-        <label for="recipe_ingredient">Ingredients</label>
-    </div>
-    <div class="input-field">
-        <img class="addRecipe-amount prefix" src="/images/icons/weighing-machine.svg"></img>
-        <input placeholder="Amount" id="recipe_amount{{id}}" type="text" class="validate">
-        <label for="recipe_amount">Amount</label>
-    </div>
-    {{> dropdown}}
+    <h5>Add Ingredient</h2>
+        <img type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg"
+            onclick='createIngredient()' style='height:5rem; width:auto'></img>
+</div>
+
+<div id='description-container' onclick='createStep()'>
+    <li style='list-style:none'>
+        <div class='collapsible-header'>
+            Instructions
+        </div>
+        <div id="description" class='collapsible-body'>
+        </div>
+    </li>
+</div>
+<div>
+    <h5>Add Step</h2>
+        <img type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg" onclick='createStep()'
+            style='height:5rem; width:auto'></img>
 </div>
