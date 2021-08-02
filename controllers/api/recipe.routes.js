@@ -9,10 +9,13 @@ router.get('/test', (req,res)=>{
 router.post('/create_recipe', async (req,res)=> {
     const createRecipe = await Recipe.create({
         name: req.body.name,
-        ingredients: req.body.ingredients,
-        amounts: req.body.amounts
+        ingredients: req.body.ingredient,
+        amounts: req.body.amount
     })
     res.json(createRecipe)
-
+})
+router.get('/', async (req,res) => {
+    const allRecipes = await Recipe.findAll()
+    res.json(allRecipes)
 })
 module.exports = router
