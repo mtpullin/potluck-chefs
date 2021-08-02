@@ -1,5 +1,5 @@
 const router = require('express').Router();
 router.get('/', (req,res)=> {
-    res.render('mykitchen')
+    res.render('kitchen')
 })
 module.exports = router
