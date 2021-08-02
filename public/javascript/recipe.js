@@ -1,15 +1,49 @@
 
 var count = 0;
-
+var flag = 0;
 var recipe = []
+// document.addEventListener('DOMContentLoaded', function() {
+//     M.AutoInit();
 
+//     var options = {
+        
+//     }
+//     var elems = document.querySelectorAll('.collapsible');
+//     var instances = M.Collapsible.init(elems, options);
+//   });
+function enable(){
+    if(flag == 0)
+    {
+        M.AutoInit();
+    
+        var options = {
+            
+        }
+        document.getElementById('description-container').setAttribute('class','collapsible')
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+        console.log(instances)
+        instances[0].open()
+        flag = 1;
+    } else{
+        return 
+    }
+}
 function create() {
+        M.AutoInit();
+    
+        var options = {
+            
+        }
+        document.getElementById('ingredient-container').setAttribute('class','collapsible')
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
     event.preventDefault()
-
+    instances[0].open()
     count++;
     if (count == 1) {
         document.getElementById('submit-container').innerHTML += `
-    <img type ='btn' class="submitRecipe prefix" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
+    <img id= submit-btn type ='btn' class="submitRecipe prefix modal-trigger" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
     `}
     else {
         var ingredient = document.getElementById(`recipe_ingredient${count - 1}`).value
@@ -33,8 +67,6 @@ function create() {
     </div>
 `
     for (var i = 0; i < recipe.length; i++) {
-        // if (document.getElementById(`recipe_ingredient${i + 1}`).value != ingredients[i].ingredient && count > 1)
-        //     ingredients[i].ingredient = document.getElementById(`recipe_ingredient${i + 1}`).value
         document.getElementById(`recipe_ingredient${i + 1}`).value = recipe[i].ingredient
         document.getElementById(`recipe_ingredient${i + 1}`).setAttribute('disabled', "")
         document.getElementById(`recipe_amount${i + 1}`).value = recipe[i].amount
