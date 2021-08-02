@@ -1,43 +1,37 @@
 
 var count = 0;
+var stepCount = 0
 var flag = 0;
-var recipe = []
-// document.addEventListener('DOMContentLoaded', function() {
-//     M.AutoInit();
 
-//     var options = {
-        
-//     }
-//     var elems = document.querySelectorAll('.collapsible');
-//     var instances = M.Collapsible.init(elems, options);
-//   });
-function enable(){
-    if(flag == 0)
-    {
-        M.AutoInit();
-    
-        var options = {
-            
-        }
-        document.getElementById('description-container').setAttribute('class','collapsible')
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, options);
-        console.log(instances)
-        instances[0].open()
-        flag = 1;
-    } else{
-        return 
+var recipe = []
+
+function createStep() {
+    M.AutoInit();
+
+    var options = {
+
     }
+    document.getElementById('description-container').setAttribute('class', 'collapsible')
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+    console.log(instances)
+    instances[0].open()
+    stepCount++
+    document.getElementById('description').innerHTML += `
+            <label for="post-comment" class="form-label">Step ${stepCount}</label>
+            <textarea type="post-comment" class="form-control" id="step${stepCount}"></textarea>
+        `
+
 }
-function create() {
-        M.AutoInit();
-    
-        var options = {
-            
-        }
-        document.getElementById('ingredient-container').setAttribute('class','collapsible')
-        var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, options);
+function createIngredient() {
+    M.AutoInit();
+
+    var options = {
+
+    }
+    document.getElementById('ingredient-container').setAttribute('class', 'collapsible')
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
     event.preventDefault()
     instances[0].open()
     count++;
@@ -75,37 +69,37 @@ function create() {
 }
 
 async function submit() {
-        var name = document.getElementById('recipe_name').value
-        var ingredient = document.getElementById(`recipe_ingredient${count}`).value
-        var amount = document.getElementById(`recipe_amount${count}`).value
+    var name = document.getElementById('recipe_name').value
+    var ingredient = document.getElementById(`recipe_ingredient${count}`).value
+    var amount = document.getElementById(`recipe_amount${count}`).value
     if (ingredient == '' || amount == '' || name == '') {
         return alert("No Empty Values")
     }
     recipe.push({ ingredient: ingredient, amount: amount })
     document.getElementById(`recipe_ingredient${count}`).setAttribute('disabled', "")
     document.getElementById(`recipe_amount${count}`).setAttribute('disabled', "")
-var ingredients = []
-var amounts = []
-recipe.forEach(element => {
-    ingredients.push(element.ingredient)
-    amounts.push(element.amount)
-})
-var ingredient = ingredients.join(',')
-var amount = amounts.join(',')
-const response = await fetch('api/recipes/create_recipe', {
-    method:'POST',
-    body:JSON.stringify({
-        name,
-        ingredient,
-        amount
-    }),
-    headers:{
-        'Content-Type': 'application/json'
+    var ingredients = []
+    var amounts = []
+    recipe.forEach(element => {
+        ingredients.push(element.ingredient)
+        amounts.push(element.amount)
+    })
+    var ingredient = ingredients.join(',')
+    var amount = amounts.join(',')
+    const response = await fetch('api/recipes/create_recipe', {
+        method: 'POST',
+        body: JSON.stringify({
+            name,
+            ingredient,
+            amount
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    if (response.ok) {
+        console.log("good")
+    } else {
+        console.log('bad')
     }
-})
-if(response.ok){
-    console.log("good")
-} else {
-    console.log('bad')
-}
 }

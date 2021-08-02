@@ -7,14 +7,23 @@
         </div>
     </li>
 </div>
-<div id='description-container' onclick='enable()'>
+<div>
+    <h5>Add Ingredient</h2>
+        <img type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg"
+            onclick='createIngredient()' style='height:5rem; width:auto'></img>
+</div>
+
+<div id='description-container' onclick='createStep()'>
     <li style='list-style:none'>
         <div class='collapsible-header'>
             Instructions
         </div>
         <div id="description" class='collapsible-body'>
-            <label for="post-comment" class="form-label">Comment</label>
-            <textarea type="post-comment" class="form-control" id="form-comment"></textarea>
         </div>
     </li>
+</div>
+<div>
+    <h5>Add Step</h2>
+        <img type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg" onclick='createStep()'
+            style='height:5rem; width:auto'></img>
 </div>
