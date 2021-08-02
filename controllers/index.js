@@ -2,7 +2,11 @@ const router = require('express').Router();
 const loginroutes = require('./loginroutes')
 const apiRoutes = require('./api/');
 const indexRoutes = require('./index-routes')
+const myKitchenRoutes = require('./myKitchen-routes')
+
+router.use('/myKitchen', myKitchenRoutes)
+router.use('/login', loginroutes)
 router.use('/api', apiRoutes);
 router.use('/', indexRoutes);
-router.use('/login', loginroutes)
+
 module.exports = router;
