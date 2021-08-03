@@ -1,4 +1,3 @@
-
 var count = 0;
 var stepCount = 0
 var flag = 0;
