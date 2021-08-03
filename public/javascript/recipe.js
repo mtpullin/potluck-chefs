@@ -1,41 +1,51 @@
 var count = 0;
 var stepCount = 0
 var flag = 0;
-
+var submitContainer = document.getElementById('submit-container')
 var recipe = []
+var steps = []
+M.AutoInit();
 
 function createStep() {
-    M.AutoInit();
-
     var options = {
-
+        
     }
     document.getElementById('description-container').setAttribute('class', 'collapsible')
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
-    console.log(instances)
-    instances[0].open()
+    var elems = document.querySelectorAll('#description-container');
+    var instances2 = M.Collapsible.init(elems, options);
+    event.preventDefault()
+    instances2[0].open()
     stepCount++
+    if (stepCount > 1) {
+        var step = document.getElementById(`step${stepCount - 1}`).value
+        
+        if (step == '') {
+            stepCount--
+            return alert("No Empty Values")
+        }
+        steps.push({ step:step })
+    }
     document.getElementById('description').innerHTML += `
-            <label for="post-comment" class="form-label">Step ${stepCount}</label>
-            <textarea type="post-comment" class="form-control" id="step${stepCount}"></textarea>
-        `
-
+    <label for="post-comment" class="form-label">Step ${stepCount}</label>
+    <textarea type="post-comment" class="form-control" id="step${stepCount}"></textarea>
+    `
+    for (var i = 0; i < steps.length; i++) {
+        document.getElementById(`step${i + 1}`).value = steps[i].step
+        document.getElementById(`step${i + 1}`).setAttribute('disabled', "")
+    }
 }
 function createIngredient() {
-    M.AutoInit();
-
     var options = {
 
     }
     document.getElementById('ingredient-container').setAttribute('class', 'collapsible')
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
+    var elems = document.querySelectorAll('#ingredient-container');
+    var instances1 = M.Collapsible.init(elems, options);
     event.preventDefault()
-    instances[0].open()
+    instances1[0].open()
     count++;
     if (count == 1) {
-        document.getElementById('submit-container').innerHTML += `
+        submitContainer.innerHTML += `
     <img id= submit-btn type ='btn' class="submitRecipe prefix modal-trigger" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
     `}
     else {
@@ -71,26 +81,36 @@ async function submit() {
     var name = document.getElementById('recipe_name').value
     var ingredient = document.getElementById(`recipe_ingredient${count}`).value
     var amount = document.getElementById(`recipe_amount${count}`).value
-    if (ingredient == '' || amount == '' || name == '') {
+    var step = document.getElementById(`step${stepCount}`).value
+    if (ingredient == '' || amount == '' || name == '' || step == '') {
         return alert("No Empty Values")
     }
     recipe.push({ ingredient: ingredient, amount: amount })
+    steps.push({step:step})
     document.getElementById(`recipe_ingredient${count}`).setAttribute('disabled', "")
     document.getElementById(`recipe_amount${count}`).setAttribute('disabled', "")
+    document.getElementById(`step${stepCount}`).setAttribute('disabled', "")
     var ingredients = []
     var amounts = []
+    var stepsArr = []
     recipe.forEach(element => {
         ingredients.push(element.ingredient)
         amounts.push(element.amount)
     })
+    steps.forEach(element => {
+        stepsArr.push(element.step)
+    })
     var ingredient = ingredients.join(',')
     var amount = amounts.join(',')
+    var stepsArr = stepsArr.join(',')
+    console.log(stepsArr, amount, ingredient)
     const response = await fetch('api/recipes/create_recipe', {
         method: 'POST',
         body: JSON.stringify({
             name,
             ingredient,
-            amount
+            amount,
+            stepsArr
         }),
         headers: {
             'Content-Type': 'application/json'
