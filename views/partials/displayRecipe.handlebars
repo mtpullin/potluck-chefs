@@ -5,15 +5,24 @@
     <h3>
         {{name}}
     </h3>
-    <p>
-    {{ingredients}}
-    </p>
-    <p>
-    {{amount}}
-    </p>
-    <p>
-    {{stepObj}}
-    </p>
+    <div class=''>
+        {{#each this.ingredients}}
+        <div class=''>
+            {{> ingredientList}}
+        </div>
+        {{/each}}
+        {{#each this.amount}}
+        <div class=''>
+            {{> amountList}}
+        </div>
+        {{/each}}
+    </div>
+
+    {{#each this.steps}}
+    <div>
+        {{> stepList}}
+    </div>
+    {{/each}}
     {{/each}}
     {{/if}}
 </div>
