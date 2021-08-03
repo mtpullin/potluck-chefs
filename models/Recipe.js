@@ -25,6 +25,9 @@ Recipe.init({
     steps: {
         type: DataTypes.STRING,
         allowNull:false
+    },
+    videoLink: {
+        type: DataTypes.STRING,
     }
 },
     {
