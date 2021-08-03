@@ -14,7 +14,9 @@ router.post('/signup', (req,res)=> {
             req.session.email = req.body.email,
             req.session.loggedIn = true;
             req.session.expiration = Date.now() + (1000*60*60)
-            res.json(dbUserData)
+            
+            return res.json(dbUserData)
+            
         })
     })
     .catch(err => {
@@ -44,7 +46,7 @@ router.post('/login', Auth, (req,res)=> {
             req.session.username = dbUserData.username
             req.session.loggedIn = true
             req.session.expiration = Date.now() + (1000*60*60)
-            res.json({user: dbUserData, message: 'Logged in!'})
+            return res.json({user: dbUserData, message: 'Logged in!'})
         })
     })
 })
