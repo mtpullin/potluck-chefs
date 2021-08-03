@@ -1,0 +1,28 @@
+<div>
+    Display Recipe
+    {{#if recipe}}
+    {{#each recipe}}
+    <h3>
+        {{name}}
+    </h3>
+    <div class=''>
+        {{#each this.ingredients}}
+        <div class=''>
+            {{> ingredientList}}
+        </div>
+        {{/each}}
+        {{#each this.amount}}
+        <div class=''>
+            {{> amountList}}
+        </div>
+        {{/each}}
+    </div>
+
+    {{#each this.steps}}
+    <div>
+        {{> stepList}}
+    </div>
+    {{/each}}
+    {{/each}}
+    {{/if}}
+</div>

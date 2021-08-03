@@ -1,42 +1,90 @@
-
 var count = 0;
 var stepCount = 0
 var flag = 0;
-
+var submitContainer = document.getElementById('submit-container')
 var recipe = []
+var steps = []
+M.AutoInit();
+async function addLink() {
+    var url = []
+    var title = document.getElementById('recipe_name')
+    if (title.value == '')
+        return alert("Enter a Recipe Name")
+
+    var options = {}
+    document.getElementById('video-container').setAttribute('class', 'collapsible')
+    var elems = document.querySelectorAll('#video-container');
+    var instances3 = M.Collapsible.init(elems, options);
+    event.preventDefault()
+    instances3[0].open()
+    document.getElementById(`recipe_name`).setAttribute('disabled', "")
+    var video_link = title.value
+    fetch('/api/yt/find_video', {
+        method: 'POST',
+        body: JSON.stringify({
+            video_link
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+        .then(data => {
+            data.forEach(element => {
+                url.push(element)
+            })
+            var count = 1;
+            return url.forEach((element) => {
+                var newA = document.createElement('a')
+                newA.setAttribute('id', `link${count}`)
+                newA.setAttribute('href', `https://www.youtube.com/watch?v=${element.videoId}`)
+                newA.setAttribute('target', '_blank')
+                count++
+                document.getElementById('yt-video-link').appendChild(newA)
+                var newimg1 = document.createElement('img')
+                var newimg2 = document.createElement('img')
+                newimg1.setAttribute('src', `${element.thumbnails}`)
+                newimg2.setAttribute('src', `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.youtube.com/watch?v=${element.videoId}`)
+                newA.appendChild(newimg1)
+                newA.appendChild(newimg2)
+            })
+        }
+        )
+}
 
 function createStep() {
-    M.AutoInit();
-
-    var options = {
-
-    }
+    var options = {}
     document.getElementById('description-container').setAttribute('class', 'collapsible')
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
-    console.log(instances)
-    instances[0].open()
+    var elems = document.querySelectorAll('#description-container');
+    var instances2 = M.Collapsible.init(elems, options);
+    event.preventDefault()
+    instances2[0].open()
     stepCount++
-    document.getElementById('description').innerHTML += `
-            <label for="post-comment" class="form-label">Step ${stepCount}</label>
-            <textarea type="post-comment" class="form-control" id="step${stepCount}"></textarea>
-        `
+    if (stepCount > 1) {
+        var step = document.getElementById(`step${stepCount - 1}`).value
 
+        if (step == '') {
+            stepCount--
+            return alert("No Empty Values")
+        }
+        steps.push({ step: step })
+    }
+    document.getElementById('description').innerHTML += `
+    <label for="post-comment" class="form-label">Step ${stepCount}</label>
+    <textarea type="post-comment" class="form-control" id="step${stepCount}"></textarea>
+    `
+    for (var i = 0; i < steps.length; i++) {
+        document.getElementById(`step${i + 1}`).value = steps[i].step
+        document.getElementById(`step${i + 1}`).setAttribute('disabled', "")
+    }
 }
 function createIngredient() {
-    M.AutoInit();
-
-    var options = {
-
-    }
+    var options = {}
     document.getElementById('ingredient-container').setAttribute('class', 'collapsible')
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
+    var elems = document.querySelectorAll('#ingredient-container');
+    var instances1 = M.Collapsible.init(elems, options);
     event.preventDefault()
-    instances[0].open()
+    instances1[0].open()
     count++;
     if (count == 1) {
-        document.getElementById('submit-container').innerHTML += `
+        submitContainer.innerHTML += `
     <img id= submit-btn type ='btn' class="submitRecipe prefix modal-trigger" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
     `}
     else {
@@ -72,26 +120,35 @@ async function submit() {
     var name = document.getElementById('recipe_name').value
     var ingredient = document.getElementById(`recipe_ingredient${count}`).value
     var amount = document.getElementById(`recipe_amount${count}`).value
-    if (ingredient == '' || amount == '' || name == '') {
+    var step = document.getElementById(`step${stepCount}`).value
+    if (ingredient == '' || amount == '' || name == '' || step == '') {
         return alert("No Empty Values")
     }
     recipe.push({ ingredient: ingredient, amount: amount })
+    steps.push({ step: step })
     document.getElementById(`recipe_ingredient${count}`).setAttribute('disabled', "")
     document.getElementById(`recipe_amount${count}`).setAttribute('disabled', "")
+    document.getElementById(`step${stepCount}`).setAttribute('disabled', "")
     var ingredients = []
     var amounts = []
+    var stepsArr = []
     recipe.forEach(element => {
         ingredients.push(element.ingredient)
         amounts.push(element.amount)
     })
+    steps.forEach(element => {
+        stepsArr.push(element.step)
+    })
     var ingredient = ingredients.join(',')
     var amount = amounts.join(',')
+    var stepsArr = stepsArr.join(',')
     const response = await fetch('api/recipes/create_recipe', {
         method: 'POST',
         body: JSON.stringify({
             name,
             ingredient,
-            amount
+            amount,
+            stepsArr
         }),
         headers: {
             'Content-Type': 'application/json'

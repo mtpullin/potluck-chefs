@@ -10,7 +10,9 @@ router.post('/create_recipe', async (req,res)=> {
     const createRecipe = await Recipe.create({
         name: req.body.name,
         ingredients: req.body.ingredient,
-        amounts: req.body.amount
+        amounts: req.body.amount,
+        steps: req.body.stepsArr,
+        videoLink: req.body.videoLink
     })
     res.json(createRecipe)
 })

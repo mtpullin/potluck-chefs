@@ -21,13 +21,20 @@ Recipe.init({
     amounts: {
         type: DataTypes.STRING,
         allowNull:false
+    },
+    steps: {
+        type: DataTypes.STRING,
+        allowNull:false
+    },
+    videoLink: {
+        type: DataTypes.STRING,
     }
 },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'test'
+        modelName: 'recipe'
     }
 );
 
