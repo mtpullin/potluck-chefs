@@ -21,13 +21,17 @@ Recipe.init({
     amounts: {
         type: DataTypes.STRING,
         allowNull:false
+    },
+    steps: {
+        type: DataTypes.STRING,
+        allowNull:false
     }
 },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'test'
+        modelName: 'recipe'
     }
 );
 

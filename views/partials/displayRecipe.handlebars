@@ -1,0 +1,19 @@
+<div>
+    Display Recipe
+    {{#if recipe}}
+    {{#each recipe}}
+    <h3>
+        {{name}}
+    </h3>
+    <p>
+    {{ingredients}}
+    </p>
+    <p>
+    {{amount}}
+    </p>
+    <p>
+    {{stepObj}}
+    </p>
+    {{/each}}
+    {{/if}}
+</div>
