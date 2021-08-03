@@ -2,6 +2,26 @@ const router = require('express').Router()
 const {User, Recipie, Comment} = require('../../models')
 const Auth = require('../../utils/auth')
 
+router.post('/signup', (req,res)=> {
+    User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+    .then(dbUserData => {
+        req.session.save(()=> {
+            req.session.user_id = dbUserData.id,
+            req.session.email = req.body.email,
+            req.session.loggedIn = true;
+            req.session.expiration = Date.now() + (1000*60*60)
+            res.json(dbUserData)
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    })
+})
 router.post('/login', Auth, (req,res)=> {
     User.findOne({
         where: {
@@ -23,7 +43,7 @@ router.post('/login', Auth, (req,res)=> {
             req.session.user_id = dbUserData.user_id
             req.session.username = dbUserData.username
             req.session.loggedIn = true
-
+            req.session.expiration = Date.now() + (1000*60*60)
             res.json({user: dbUserData, message: 'Logged in!'})
         })
     })
