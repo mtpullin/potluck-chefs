@@ -14,7 +14,7 @@ async function loginForm(event) {
             headers: { 'Content-Type': 'application/json'}
         })
         if(response.ok){
-            document.location.replace('/')
+            document.location.replace('/kitchen')
         }else{
             alert(response.statusText)
         }
@@ -41,7 +41,7 @@ async function signupForm(event) {
             headers: {'Content-type':'application/json'}
         })
         if(response.ok){
-            document.location.replace('/index')
+            document.location.replace('/kitchen')
         } else {
             alert(response.statusText)
         }
