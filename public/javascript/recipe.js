@@ -4,6 +4,7 @@ var flag = 0;
 var submitContainer = document.getElementById('submit-container')
 var recipe = []
 var steps = []
+var checkboxes = []
 M.AutoInit();
 async function addLink() {
     var url = []
@@ -37,6 +38,10 @@ async function addLink() {
                 var newCheckInput = document.createElement('input')
                 var newCheckSpan = document.createElement('span')
                 newCheckContainer.setAttribute('class','col')
+                newCheckContainer.setAttribute('id',`ytContainer${count}`)
+                newCheckInput.setAttribute('id',`ytInput${count}`)
+                newCheckSpan.setAttribute('id',`span${count}`)
+                newCheckSpan.setAttribute('onclick','disable(this)')
                 newCheckContainer.appendChild(newCheckLabel)
                 newCheckContainer.appendChild(newCheckInput)
                 newCheckInput.setAttribute('type','checkbox')
@@ -53,14 +58,33 @@ async function addLink() {
                 var newimg1 = document.createElement('img')
                 var newimg2 = document.createElement('img')
                 newimg1.setAttribute('src', `${element.thumbnails}`)
-                newimg2.setAttribute('src', `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.youtube.com/watch?v=${element.videoId}`)
+                // newimg2.setAttribute('src', `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.youtube.com/watch?v=${element.videoId}`)
                 newA.appendChild(newimg1)
                 newA.appendChild(newimg2)
+                checkboxes.push(newCheckInput)
             })
         }
         )
 }
-
+async function disable(btn){
+    console.log(flag)
+    var index = parseInt(btn.id.split('span')[1])-1
+    console.log(index)
+    for(var i = 0;i<checkboxes.length;i++)
+    {
+        if(i == index){
+            continue;
+        }
+        if(flag == 0){
+        checkboxes[i].setAttribute('disabled',"")
+        } else if(flag == 1){
+            checkboxes[i].removeAttribute('disabled')
+        }
+    }
+    if(flag == 0)
+    flag = 1
+    else flag = 0;
+}
 function createStep() {
     var options = {}
     document.getElementById('description-container').setAttribute('class', 'collapsible')
