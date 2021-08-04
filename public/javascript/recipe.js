@@ -10,7 +10,11 @@ var link = []
 var span = []
 var videoLink = '';
 var videoImage = '';
+
 M.AutoInit();
+var options = {}
+var elems = document.querySelectorAll('.recipe')
+var displayRecipe = M.Collapsible.init(elems,options)
 async function addLink() {
     var url = []
     var title = document.getElementById('recipe_name')
