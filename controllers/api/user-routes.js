@@ -11,11 +11,11 @@ router.post('/signup', (req,res)=> {
     .then(dbUserData => {
         req.session.save(()=> {
             req.session.user_id = dbUserData.id,
-            req.session.email = req.body.email,
+            req.session.email = dbUserData.email,
             req.session.loggedIn = true;
-            req.session.expiration = Date.now() + (1000*30)
+            req.session.expiration = Date.now() + (1000*60*10)
             
-            return res.json()
+           res.json(dbUserData)
             
         })
     })
@@ -24,7 +24,7 @@ router.post('/signup', (req,res)=> {
         res.status(500).json(err)
     })
 })
-router.post('/login', Auth, (req,res)=> {
+router.post('/login', (req,res)=> {
     User.findOne({
         where: {
             email: req.body.email
@@ -42,11 +42,12 @@ router.post('/login', Auth, (req,res)=> {
             return
         }
         req.session.save(()=> {
-            req.session.user_id = dbUserData.user_id
+            req.session.user_id = dbUserData.id
             req.session.username = dbUserData.username
             req.session.loggedIn = true
-            req.session.expiration = Date.now() + (1000*30)
-            return res.json({user: dbUserData, message: 'Logged in!'})
+            req.session.expiration = Date.now() + (1000*60*10)
+
+            res.json({user: dbUserData, message: 'Logged in!'})
         })
     })
 })
