@@ -9,9 +9,7 @@ router.get('/index', (req, res) => {
         res.render('index', { recipe: recipe})
     })
 })
-router.get('/testView',(req,res) => {
-    res.render('testView', {testView:"Test Index"})
-})
+
 router.get('/',(req,res) => {
     res.redirect('/index');
 })

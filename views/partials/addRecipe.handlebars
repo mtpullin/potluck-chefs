@@ -1,14 +1,21 @@
-<div>
-    <div class="input-field">
-        <img class="addRecipe-icon prefix" src="/images/icons/menu.svg"></img>
-        <input placeholder="Name of Recipe" id="recipe_name" type="text" class="validate">
-        <label for="recipe_name">Recipe Name</label>
+<section id='create-recipe'>
+    <div>
+        <h3>Create Recipe</h3>
     </div>
-{{> addLink}}
-{{> addIngredient}}
-      <div id='submit-container'>
-     
-      </div>
-    <script src="/javascript/recipe.js"></script>
-    <script src="/javascript/dropdown.js"></script>       
-</div>
+
+    <div>
+        <div class="input-field">
+            <img class="addRecipe-icon prefix" src="/images/icons/menu.svg"></img>
+            <input placeholder="Name of Recipe" id="recipe_name" type="text" class="validate">
+            <label for="recipe_name">Recipe Name</label>
+        </div>
+
+        {{> addLink}}
+        {{> addIngredient}}
+
+
+        <div id='submit-container'>
+        </div>
+    </div>
+</section>
+<script src="/javascript/recipe.js"></script>
