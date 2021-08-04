@@ -5,6 +5,11 @@ var submitContainer = document.getElementById('submit-container')
 var recipe = []
 var steps = []
 var checkboxes = []
+var images = []
+var link = []
+var span = []
+var videoLink = '';
+var videoImage = '';
 M.AutoInit();
 async function addLink() {
     var url = []
@@ -20,7 +25,7 @@ async function addLink() {
     instances3[0].open()
     document.getElementById(`recipe_name`).setAttribute('disabled', "")
     var video_link = title.value
-    fetch('/api/yt/find_video', {
+    await fetch('/api/yt/find_video', {
         method: 'POST',
         body: JSON.stringify({
             video_link
@@ -32,19 +37,20 @@ async function addLink() {
                 url.push(element)
             })
             var count = 1;
+            document.getElementById("addLinkDiv").setAttribute('hidden', '')
             return url.forEach((element) => {
                 var newCheckContainer = document.createElement("div")
                 var newCheckLabel = document.createElement('label')
                 var newCheckInput = document.createElement('input')
                 var newCheckSpan = document.createElement('span')
-                newCheckContainer.setAttribute('class','col')
-                newCheckContainer.setAttribute('id',`ytContainer${count}`)
-                newCheckInput.setAttribute('id',`ytInput${count}`)
-                newCheckSpan.setAttribute('id',`span${count}`)
-                newCheckSpan.setAttribute('onclick','disable(this)')
+                newCheckContainer.setAttribute('class', 'col')
+                newCheckContainer.setAttribute('id', `ytContainer${count}`)
+                newCheckInput.setAttribute('id', `ytInput${count}`)
+                newCheckSpan.setAttribute('id', `span${count}`)
+                newCheckSpan.setAttribute('onclick', 'disable(this)')
                 newCheckContainer.appendChild(newCheckLabel)
                 newCheckContainer.appendChild(newCheckInput)
-                newCheckInput.setAttribute('type','checkbox')
+                newCheckInput.setAttribute('type', 'checkbox')
                 var newA = document.createElement('a')
                 newA.setAttribute('id', `link${count}`)
                 newA.setAttribute('href', `https://www.youtube.com/watch?v=${element.videoId}`)
@@ -56,33 +62,43 @@ async function addLink() {
                 newCheckLabel.appendChild(newCheckSpan)
                 newCheckContainer.appendChild(newA)
                 var newimg1 = document.createElement('img')
-                var newimg2 = document.createElement('img')
+                // var newimg2 = document.createElement('img')
                 newimg1.setAttribute('src', `${element.thumbnails}`)
                 // newimg2.setAttribute('src', `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.youtube.com/watch?v=${element.videoId}`)
                 newA.appendChild(newimg1)
-                newA.appendChild(newimg2)
+                // newA.appendChild(newimg2)
                 checkboxes.push(newCheckInput)
+                link.push(newA)
+                images.push(newimg1)
+                span.push(newCheckSpan)
             })
         }
         )
 }
-async function disable(btn){
-    console.log(flag)
-    var index = parseInt(btn.id.split('span')[1])-1
-    console.log(index)
-    for(var i = 0;i<checkboxes.length;i++)
-    {
-        if(i == index){
+async function disable(btn) {
+    var index = parseInt(btn.id.split('span')[1]) - 1
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (i == index) {
+            if (flag == 0) {
+                videoImage = images[i].getAttribute('src')
+                videoLink = link[i].getAttribute('href')
+                videoLink = videoLink.split('=')[1]
+            } else {
+                videoLink = ''
+                videoImage = ''
+            }
             continue;
         }
-        if(flag == 0){
-        checkboxes[i].setAttribute('disabled',"")
-        } else if(flag == 1){
+        if (flag == 0) {
+            checkboxes[i].setAttribute('disabled', "")
+            span[i].removeAttribute('onclick')
+        } else if (flag == 1) {
             checkboxes[i].removeAttribute('disabled')
+            span[i].setAttribute('onclick', 'disable(this)')
         }
     }
-    if(flag == 0)
-    flag = 1
+    if (flag == 0)
+        flag = 1
     else flag = 0;
 }
 function createStep() {
@@ -184,15 +200,17 @@ async function submit() {
             name,
             ingredient,
             amount,
-            stepsArr
+            stepsArr,
+            videoLink,
+            videoImage
         }),
         headers: {
             'Content-Type': 'application/json'
         }
     })
     if (response.ok) {
-        console.log("good")
+        alert('Recipe Successfully Added')
     } else {
-        console.log('bad')
+        alert('An error has occured')
     }
 }

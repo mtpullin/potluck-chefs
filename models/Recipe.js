@@ -20,22 +20,25 @@ Recipe.init({
     },
     amounts: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: false
     },
     steps: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: false
     },
     videoLink: {
         type: DataTypes.STRING,
     },
+    videoImage: {
+        type: DataTypes.STRING
+    },
     user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'user',
-          key: 'id'
+            model: 'user',
+            key: 'id'
         }
-      }
+    }
 },
     {
         sequelize,
