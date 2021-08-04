@@ -10,7 +10,14 @@ var link = []
 var span = []
 var videoLink = '';
 var videoImage = '';
+
 M.AutoInit();
+var options = {}
+var elems = document.querySelectorAll('.recipe')
+var elems2 = document.getElementById('create-recipe')
+var displayRecipe = M.Collapsible.init(elems, options)
+var createRecipe = M.Collapsible.init(elems2,options)
+
 async function addLink() {
     var url = []
     var title = document.getElementById('recipe_name')
@@ -214,3 +221,17 @@ async function submit() {
         alert('An error has occured')
     }
 }
+// async function getId(btn){
+//     var id= btn.id.split('btn')[1]
+//     return deleteRecipe(id)
+// }
+// async function deleteRecipe(id) {
+//     const response = await fetch(`/api/recipes/delete/${id}`, {
+//         method: 'DELETE'
+//     });
+//     if (response.ok) {
+//         document.location.replace('/kitchen')
+//     } else {
+//         alert(response.statusText);
+//     }
+// }

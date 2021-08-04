@@ -1,19 +1,8 @@
-function testAPI(){
-    // const test = fetch('/api/yt/', {
-    //     method: 'GET',
-    //     headers: { 'Content-Type': 'application/json'}
-    // }).then(res=> res.json())
-    // .then(data => 
-    //     console.log(data)
-    // )
-
-    // if(test.ok){
-    //     console.log('true')
-    // }
-    // else{
-    //     console.log('false')
-    // }
-}
-
-
-testAPI()
+// function hideDelete(){
+//     var deleteBtn = document.querySelectorAll('.deleteBtn')
+//     console.log(deleteBtn)
+//     deleteBtn.forEach(element => {
+//         element.setAttribute('hidden','')
+//     })
+// }
+// hideDelete()

@@ -9,7 +9,6 @@ router.post('/find_video', (req, res) => {
   axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${video_link}&type=video&key=${process.env.YT_API}`)
     .then(response => {
       var newData = response.data.items
-      var allData = response.data
       var thumbnails = []
       var videoId = []
       newData.forEach(element => {
