@@ -209,7 +209,7 @@ async function submit() {
         }
     })
     if (response.ok) {
-        alert('Recipe Successfully Added')
+        document.location.replace('/kitchen')
     } else {
         alert('An error has occured')
     }

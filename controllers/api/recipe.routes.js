@@ -11,8 +11,6 @@ router.post('/create_recipe', Auth, async (req,res)=> {
         videoLink: req.body.videoLink,
         videoImage: req.body.videoImage,
         user_id: req.session.user_id
-    }).then(data => {
-        res.redirect('/kitchen')
     })
     res.json(createRecipe)
 })
