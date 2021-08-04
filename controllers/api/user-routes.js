@@ -62,5 +62,10 @@ router.post('/logout', Auth, (req,res)=> {
     }
 })
 
+router.get('/', (req,res)=> {
+    const test = User.findAll()
+    res.json(test)
+})
+
 
 module.exports = router;
