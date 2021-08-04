@@ -1,11 +1,11 @@
 async function loginForm(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#email-login').nodeValue.trim()
-    const password = document.querySelector('#password-login').nodeValue.trim()
+    const email = document.querySelector('#email-login').value.trim()
+    const password = document.querySelector('#password-login').value.trim()
 
     if(email && password) {
-        const response = await fetch('/api/login/login', {
+        const response = await fetch('api/login/login', {
             method: 'post',
             body: JSON.stringify({
                 email,

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Recipe } = require('../models')
-router.get('/', (req, res) => {
+const Auth = require('../utils/auth')
+router.get('/', Auth,(req, res) => {
     Recipe.findAll().then(data => {
         recipe = []
         data.forEach(element => {
