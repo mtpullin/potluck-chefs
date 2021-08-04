@@ -5,25 +5,39 @@
     <h3>
         {{name}}
     </h3>
-    <div class=''>
-        {{#each this.ingredients}}
+    <div>
         <div class=''>
-            {{> ingredientList}}
+            <h5>Ingredients</h5>
+            {{#each this.ingredients}}
+            <ol class=''>
+                {{> ingredientList}}
+            </ol>
+            {{/each}}
+            {{#each this.amount}}
+            <div class=''>
+                {{> amountList}}
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
-        {{#each this.amount}}
-        <div class=''>
-            {{> amountList}}
+        <div>
+            <h5>
+                Check out the video!
+            </h5>
+            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img src={{videoImage}}></a>
         </div>
-        {{/each}}
     </div>
+
 
     {{#each this.steps}}
     <div>
+    <h4>Directions to Cook</h4>
+     <ol>
         {{> stepList}}
+    </ol>   
     </div>
+    
     {{/each}}
     {{/each}}
     {{/if}}
 </div>
-   <script src="/javascript/recipe.js"></script>
+<script src="/javascript/recipe.js"></script>
