@@ -13,21 +13,25 @@
     <script src="https://apis.google.com/js/api.js"></script>
     <link rel="stylesheet" href="/stylesheets/materialize.min.css">
     <script src="/javascript/materialize.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Slabo+13px&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
     <div class="wrapper">
         <header>
-            <nav class="nav-wrapper">
-                <a href="/" class="logo"><img src="/images/cooking/favicon-32x32.png">Potluck Chef</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/kitchen">Your Kitchen</a></li>
-                    <li><a href="/login">Log In</a></li>
-                    <li><a id='logoutBtn'>Log Out</a></li>
-                    <script src="/javascript/logout.js"></script>
-                </ul>
-
+            <nav class = 'navi'>
+                <div class="nav-wrapper">
+                    <a href="/" class="logo"><img class='brand' src="/images/cooking/favicon-32x32.png">Potluck Chef</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li class='nav-btn'><a href="/kitchen">Your Kitchen</a></li>
+                        <li class='nav-btn'><a href="/login">Log In</a></li>
+                        <li class='nav-btn'><a id='logoutBtn'>Log Out</a></li>
+                        <script src="/javascript/logout.js"></script>
+                    </ul>
+                </div>
             </nav>
         </header>
         <main>

@@ -62,6 +62,7 @@ async function addLink() {
                 newA.setAttribute('id', `link${count}`)
                 newA.setAttribute('href', `https://www.youtube.com/watch?v=${element.videoId}`)
                 newA.setAttribute('target', '_blank')
+                newA.setAttribute('class', 'yt-vide')
                 count++
                 document.getElementById('yt-video-link').appendChild(newCheckContainer)
                 newCheckContainer.appendChild(newCheckLabel)

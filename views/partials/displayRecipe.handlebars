@@ -13,38 +13,40 @@
                         </h3>
                     </div>
                     <div class='col s2' style='text-align:center'>
-                        <img src='https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=https://www.youtube.com/watch?v={{videoLink}}'>
+                        <img class='qr-box'
+                            src='https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=https://www.youtube.com/watch?v={{videoLink}}'>
                     </div>
 
                 </div>
                 <div class='collapsible-body'>
                     <div class='row'>
-                        <div class='row col'>
+                        <div class='row col s6'>
                             <h5>Ingredients</h5>
                             {{#each this.ingredients}}
-                            <div>
-                                <ol class='col'>
+                            <div class='ingredient-box'>
+                                <ol class='col ingredientL'>
                                     {{> ingredientList}}
                                 </ol>
                                 {{/each}}
+
                                 {{#each this.amount}}
-                                <ol class='col'>
+                                <ol class='col ingredientR'>
                                     {{> amountList}}
                                 </ol>
                                 {{/each}}
                             </div>
                         </div>
-                        <div class='col'>
+                        <div class='col s6' style='text-align: center;'>
                             <h5>
                                 Check out the video!
                             </h5>
-                            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img
+                            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img class='yt-video'
                                     src={{videoImage}}></a>
                         </div>
                     </div>
                     {{#each this.steps}}
-                    <div>
-                        <h4>Directions to Cook</h4>
+                    <div class='directions'>
+                        <h4 style="text-align: center;">Directions to Cook</h4>
                         <ol>
                             {{> stepList}}
                         </ol>
