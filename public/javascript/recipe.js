@@ -10,7 +10,14 @@ var link = []
 var span = []
 var videoLink = '';
 var videoImage = '';
+
 M.AutoInit();
+var options = {}
+var elems = document.querySelectorAll('.recipe')
+var elems2 = document.getElementById('create-recipe')
+var displayRecipe = M.Collapsible.init(elems, options)
+var createRecipe = M.Collapsible.init(elems2, options)
+
 async function addLink() {
     var url = []
     var title = document.getElementById('recipe_name')
@@ -55,6 +62,7 @@ async function addLink() {
                 newA.setAttribute('id', `link${count}`)
                 newA.setAttribute('href', `https://www.youtube.com/watch?v=${element.videoId}`)
                 newA.setAttribute('target', '_blank')
+                newA.setAttribute('class', 'yt-vide')
                 count++
                 document.getElementById('yt-video-link').appendChild(newCheckContainer)
                 newCheckContainer.appendChild(newCheckLabel)
@@ -137,7 +145,10 @@ function createIngredient() {
     count++;
     if (count == 1) {
         submitContainer.innerHTML += `
+        <div class ='row'>
+    <h5 class='col'>Submit Recipe</h2>
     <img id= submit-btn type ='btn' class="submitRecipe prefix modal-trigger" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
+    </div>
     `}
     else {
         var ingredient = document.getElementById(`recipe_ingredient${count - 1}`).value
@@ -214,3 +225,17 @@ async function submit() {
         alert('An error has occured')
     }
 }
+// async function getId(btn){
+//     var id= btn.id.split('btn')[1]
+//     return deleteRecipe(id)
+// }
+// async function deleteRecipe(id) {
+//     const response = await fetch(`/api/recipes/delete/${id}`, {
+//         method: 'DELETE'
+//     });
+//     if (response.ok) {
+//         document.location.replace('/kitchen')
+//     } else {
+//         alert(response.statusText);
+//     }
+// }

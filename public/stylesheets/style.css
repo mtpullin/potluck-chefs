@@ -2,11 +2,66 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #f1fcff
   }
 
   main {
     flex: 1 0 auto;
   }
+
+*{
+  font-family: 'Slabo 13px', serif;
+}
+.navi,.page-footer {
+  background-color: #ff9800;
+}
+.nav-btn {
+  background-color: #ff9800;
+}
+.recipe {
+  padding:0px
+}
+.recipe-container{
+  padding: 2%;
+}
+.addRecipe{
+  border-style: dashed;
+}
+.collapsible {
+  font-family: 'slabo';
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  box-shadow: 0 4px 4px 0 #ff9800, 0 6px 20px 0 #ffc107
+}
+.collapsible-header {
+  background-color: beige;
+  padding: 2%;
+}
+.collapsible-body {
+  background-color: beige;
+  border-style: dashed;
+;
+}
+.ingredient-box,.ingredientL{
+  margin-right: 0px;
+  padding-right: 0px;
+
+}
+#yt-video-link,#component,#description{
+  border-style: none;
+  margin: 0px 1%;
+  box-shadow: 0 4px 4px 0 #ff9800, 0 6px 20px 0 #ffc107
+}
+.yt-video{
+  height: auto;
+  width: 100%;
+  max-width: 300px;
+}
+.qr-box {
+  height: auto;
+  width: 100%;
+  max-width: 75px;
+}
 #bottom-footer {
     position: absolute;
     left: 0;
@@ -14,4 +69,39 @@ body {
     height: 50px;
     width: 100%;
     text-align: center;
+}
+/* .add-ingredient,.add-link,.add-step {
+  border-style: dashed;
+  width: fit-content;
+  border-radius: 100px;
+  margin-left:25%;
+} */
+.addRecipe img {
+  height: auto;
+  width: 100%;
+  max-width: 75px;
+}
+@media screen and (max-width: 550px) {
+ li,ol{
+   font-size: x-small;
+ }
+ .yt-video{
+  height: auto;
+  width: 100%;
+  max-width: 50px;
+}
+.collapsible-body{
+  padding:5px;
+}
+.qr-box {
+  height: auto;
+  width: 150%;
+  max-width: 300px;
+}
+h3 {
+  font-size: medium;
+}
+h4,h5 {
+  font-size: smaller;
+}
 }

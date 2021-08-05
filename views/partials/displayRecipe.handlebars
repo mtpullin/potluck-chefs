@@ -1,43 +1,63 @@
 <div>
-    Display Recipe
     {{#if recipe}}
     {{#each recipe}}
-    <h3>
-        {{name}}
-    </h3>
-    <div>
-        <div class=''>
-            <h5>Ingredients</h5>
-            {{#each this.ingredients}}
-            <ol class=''>
-                {{> ingredientList}}
-            </ol>
-            {{/each}}
-            {{#each this.amount}}
-            <div class=''>
-                {{> amountList}}
-            </div>
-            {{/each}}
-        </div>
-        <div>
-            <h5>
-                Check out the video!
-            </h5>
-            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img src={{videoImage}}></a>
-        </div>
-    </div>
+    {{!-- <img id='delete-btn{{id}}' type='btn' class="deleteBtn prefix modal-trigger" src="/images/icons/remove.svg"
+        onclick='getId(this)' style='height:2rem; width:auto'></img> --}}
+    <div class='row' style='width:80%; margin:10px 10%'>
+        <div class='collapsible recipe col s10'>
+            <li style='list-style:none'>
+                <div class='collapsible-header row'>
+                    <div class='col s6'>
+                        <h3>
+                            {{name}}
+                        </h3>
+                    </div>
+                    <div class='col s2' style='text-align:center'>
+                        <img class='qr-box'
+                            src='https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=https://www.youtube.com/watch?v={{videoLink}}'>
+                    </div>
 
+                </div>
+                <div class='collapsible-body'>
+                    <div class='row'>
+                        <div class='row col s6'>
+                            <h5>Ingredients</h5>
+                            {{#each this.ingredients}}
+                            <div class='ingredient-box'>
+                                <ol class='col ingredientL'>
+                                    {{> ingredientList}}
+                                </ol>
+                                {{/each}}
 
-    {{#each this.steps}}
-    <div>
-    <h4>Directions to Cook</h4>
-     <ol>
-        {{> stepList}}
-    </ol>   
+                                {{#each this.amount}}
+                                <ol class='col ingredientR'>
+                                    {{> amountList}}
+                                </ol>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class='col s6' style='text-align: center;'>
+                            <h5>
+                                Check out the video!
+                            </h5>
+                            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img class='yt-video'
+                                    src={{videoImage}}></a>
+                        </div>
+                    </div>
+                    {{#each this.steps}}
+                    <div class='directions'>
+                        <h4 style="text-align: center;">Directions to Cook</h4>
+                        <ol>
+                            {{> stepList}}
+                        </ol>
+                    </div>
+                    {{/each}}
+                </div>
+        </div>
+        {{> exportRecipe }}
     </div>
-    
-    {{/each}}
     {{/each}}
     {{/if}}
+    </li>
 </div>
 <script src="/javascript/recipe.js"></script>

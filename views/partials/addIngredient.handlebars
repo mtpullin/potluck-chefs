@@ -1,29 +1,29 @@
 <div id='ingredient-container' class=''>
     <li style='list-style:none'>
         <div class='collapsible-header'>
-            Ingredients
+          <h5 class = 'col style='place-content: center;''>Ingredient</h5>
         </div>
         <div id="component" class='collapsible-body'>
         </div>
     </li>
 </div>
-<div>
-    <h5>Add Ingredient</h2>
-        <img type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg"
+<div class ='row add-ingredient'>
+    <h5 class = 'col' >Add Ingredient</h5>
+        <img  class = 'col' type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg"
             onclick='createIngredient()' style='height:5rem; width:auto'></img>
 </div>
 
 <div id='description-container'>
     <li style='list-style:none'>
         <div class='collapsible-header'>
-            Instructions
+            <h5 class = 'col' style='place-content: center;'>Instruction</h5>
         </div>
         <div id="description" class='collapsible-body'>
         </div>
     </li>
 </div>
-<div>
-    <h5>Add Step</h2>
-        <img type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg" onclick='createStep()'
+<div class='row add-step'>
+    <h5 class='col'>Add Step</h5>
+        <img  class='col' type='btn' class="addRecipeAnotherIngredient prefix" src="/images/icons/add.svg" onclick='createStep()'
             style='height:5rem; width:auto'></img>
 </div>
