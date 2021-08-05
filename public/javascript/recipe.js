@@ -16,7 +16,7 @@ var options = {}
 var elems = document.querySelectorAll('.recipe')
 var elems2 = document.getElementById('create-recipe')
 var displayRecipe = M.Collapsible.init(elems, options)
-var createRecipe = M.Collapsible.init(elems2,options)
+var createRecipe = M.Collapsible.init(elems2, options)
 
 async function addLink() {
     var url = []
@@ -145,7 +145,10 @@ function createIngredient() {
     count++;
     if (count == 1) {
         submitContainer.innerHTML += `
+        <div class ='row'>
+    <h5 class='col'>Submit Recipe</h2>
     <img id= submit-btn type ='btn' class="submitRecipe prefix modal-trigger" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
+    </div>
     `}
     else {
         var ingredient = document.getElementById(`recipe_ingredient${count - 1}`).value

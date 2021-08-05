@@ -47,6 +47,11 @@ body {
   padding-right: 0px;
 
 }
+#yt-video-link,#component,#description{
+  border-style: none;
+  margin: 0px 1%;
+  box-shadow: 0 4px 4px 0 #ff9800, 0 6px 20px 0 #ffc107
+}
 .yt-video{
   height: auto;
   width: 100%;
@@ -64,6 +69,17 @@ body {
     height: 50px;
     width: 100%;
     text-align: center;
+}
+/* .add-ingredient,.add-link,.add-step {
+  border-style: dashed;
+  width: fit-content;
+  border-radius: 100px;
+  margin-left:25%;
+} */
+.addRecipe img {
+  height: auto;
+  width: 100%;
+  max-width: 75px;
 }
 @media screen and (max-width: 550px) {
  li,ol{
