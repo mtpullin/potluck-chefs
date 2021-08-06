@@ -81,6 +81,15 @@ body {
   width: 100%;
   max-width: 75px;
 }
+.deleteBtn {
+  margin:0px !important;
+  height:25px;
+  width: 100%;
+  max-width: 25px;
+}
+.displayRecipe-name {
+  text-align: center;
+}
 @media screen and (max-width: 550px) {
  li,ol{
    font-size: x-small;
