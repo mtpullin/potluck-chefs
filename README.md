@@ -6,15 +6,14 @@
   ### [Usage](#usage)
   ### [License](#license)
   ### [Credits](#credits)
-  ### [Tests](#tests)
   ### [Questions](#questions)
 
   ## Description
   Website designed to allow people to share and create recipes 
+  
+  ![image](https://user-images.githubusercontent.com/82049270/128440971-f83c208a-a11b-4c86-a361-73e8489bc490.png)
 
-  ## Installation
    
-
   ## Credits
   Hamzah Ullah, Ashley Thomas, Kerby Henry 
 
@@ -22,11 +21,11 @@
   MIT 
   ![badge](https://img.shields.io/badge/license-MIT-red)
   
-  ## Tests
-  undefined
 
   ## Usage
   used to keep track of recipes and share them with others as well as get recipes from others 
+  ## Website
+  https://potluck-chef.herokuapp.com/index
 
   ## Questions
   
