@@ -225,17 +225,17 @@ async function submit() {
         alert('An error has occured')
     }
 }
-// async function getId(btn){
-//     var id= btn.id.split('btn')[1]
-//     return deleteRecipe(id)
-// }
-// async function deleteRecipe(id) {
-//     const response = await fetch(`/api/recipes/delete/${id}`, {
-//         method: 'DELETE'
-//     });
-//     if (response.ok) {
-//         document.location.replace('/kitchen')
-//     } else {
-//         alert(response.statusText);
-//     }
-// }
+async function getId(btn){
+    var id= btn.id.split('btn')[1]
+    return deleteRecipe(id)
+}
+async function deleteRecipe(id) {
+    const response = await fetch(`/api/recipes/delete/${id}`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        document.location.replace('/kitchen')
+    } else {
+        alert(response.statusText);
+    }
+}

@@ -15,7 +15,7 @@
 
    
   ## Credits
-  Hamzah Ullah, Ashley Thomas, Kerby Henry 
+  Hamzah Ullah, Ashley Thomas, Kerby Henry, Mitchell Pullin
 
   ## License
   MIT 
@@ -23,7 +23,7 @@
   
 
   ## Usage
-  used to keep track of recipes and share them with others as well as get recipes from others 
+  Used to keep track of recipes and share them with others as well as get recipes from others 
   ## Website
   https://potluck-chef.herokuapp.com/index
 
