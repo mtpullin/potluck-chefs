@@ -12,7 +12,11 @@ router.get('/', Auth, (req, res) => {
         data.forEach(element => {
             recipe.push({id:element.id, name: element.name, ingredients: [{ itemIngredient: element.ingredients.split(',') }], amount: [{ itemAmount: element.amounts.split(',') }], steps: [{ itemStep: element.steps.split(',') }], videoLink: element.videoLink, videoImage:element.videoImage  })
         })
-        res.render('kitchen', { recipe: recipe, loggedIn: req.session.loggedIn })
+
+        if(req.session.loggedIn)
+        res.render('kitchen', { recipe: recipe, loggedIn: true })
+        else 
+        res.render('kitchen', { recipe: recipe})
     })
 })
 module.exports = router

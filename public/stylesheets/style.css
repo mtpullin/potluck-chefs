@@ -70,12 +70,6 @@ body {
     width: 100%;
     text-align: center;
 }
-/* .add-ingredient,.add-link,.add-step {
-  border-style: dashed;
-  width: fit-content;
-  border-radius: 100px;
-  margin-left:25%;
-} */
 .addRecipe img {
   height: auto;
   width: 100%;
@@ -89,29 +83,4 @@ body {
 }
 .displayRecipe-name,.createRecipe-name {
   text-align: center;
-}
-
-@media screen and (max-width: 550px) {
- li,ol{
-   font-size: x-small;
- }
- .yt-video{
-  height: auto;
-  width: 100%;
-  max-width: 50px;
-}
-.collapsible-body{
-  padding:5px;
-}
-.qr-box {
-  height: auto;
-  width: 150%;
-  max-width: 300px;
-}
-h3 {
-  font-size: medium;
-}
-h4,h5 {
-  font-size: smaller;
-}
 }

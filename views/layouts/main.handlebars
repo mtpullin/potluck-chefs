@@ -22,17 +22,34 @@
 <body>
     <div class="wrapper">
         <header>
-            <nav class = 'navi'>
+            <nav class='navi'>
                 <div class="nav-wrapper">
-                    <a style='    font-size: 50px;'href="/" class="logo"><img class='brand' src="/images/cooking/favicon-32x32.png">Potluck Chef</a>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <a style='    font-size: 50px;' href="/" class="logo"><img class='brand'
+                            src="/images/cooking/favicon-32x32.png">Potluck Chef</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li class='nav-btn'><a href="/kitchen">Your Kitchen</a></li>
+                        {{#if loggedIn}}
+                        <li class='nav-btn'><a id='logoutBtn' onclick='logOut(event)'>Log Out</a></li>
+                        {{else}}
                         <li class='nav-btn'><a href="/login">Log In</a></li>
-                        <li class='nav-btn'><a id='logoutBtn'>Log Out</a></li>
-                        <script src="/javascript/logout.js"></script>
+                        {{/if}}
                     </ul>
                 </div>
             </nav>
+
+            <ul id="slide-out" class="sidenav">
+                <li><a class="waves-effect" href="/">View Recipes</a></li>
+                <li><a class="waves-effect" href="/kitchen">My Kitchen</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                 {{#if loggedIn}}
+                <li><a class="waves-effect logoutBtn" onclick='logOut(event)'>Log Out</a></li>
+                {{else}}
+                <li><a class="waves-effect" href="/login">Log In</a></li>
+                {{/if}}
+            </ul>
         </header>
         <main>
             {{{ body }}}
@@ -40,5 +57,6 @@
     </div>
     {{> footer}}
 </body>
-
+<script src="/javascript/logout.js"></script>
+<script src='/javascript/navbar.js'></script>
 </html>
