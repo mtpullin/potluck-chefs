@@ -12,7 +12,7 @@ router.post('/find_video', (req, res) => {
       var thumbnails = []
       var videoId = []
       newData.forEach(element => {
-        thumbnails.push(element.snippet.thumbnails.default.url)
+        thumbnails.push(element.snippet.thumbnails.high.url)
       })
       newData.forEach(element => {
         videoId.push(element.id.videoId)

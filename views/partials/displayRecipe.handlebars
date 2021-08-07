@@ -1,14 +1,16 @@
 <div>
     {{#if recipe}}
     {{#each recipe}}
-    {{!-- <img id='delete-btn{{id}}' type='btn' class="deleteBtn prefix modal-trigger" src="/images/icons/remove.svg"
-        onclick='getId(this)' style='height:2rem; width:auto'></img> --}}
     <div class='row' style='width:80%; margin:10px 10%'>
         <div class='collapsible recipe col s10'>
             <li style='list-style:none'>
                 <div class='collapsible-header row'>
-                    <div class='col s6'>
-                        <h3>
+                    <div class='col s2'>
+                        <img id='delete-btn{{id}}' type='btn' class="deleteBtn"
+                            src="/images/icons/remove.svg" onclick='getId(this)' ></img>
+                    </div>
+                    <div class='col s8'>
+                        <h3 class='displayRecipe-name'>
                             {{name}}
                         </h3>
                     </div>
@@ -40,8 +42,8 @@
                             <h5>
                                 Check out the video!
                             </h5>
-                            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img class='yt-video'
-                                    src={{videoImage}}></a>
+                            <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img
+                                    class='yt-video' src={{videoImage}}></a>
                         </div>
                     </div>
                     {{#each this.steps}}

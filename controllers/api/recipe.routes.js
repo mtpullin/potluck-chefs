@@ -24,7 +24,7 @@ router.delete('/delete/:id', Auth, (req, res) => {
             res.status(404).json({ message: 'No post found with this id' });
             return;
         }
-        res.redirect('/kitchen')
+        res.json(data)
     })
         .catch(err => {
             console.log(err);
