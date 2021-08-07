@@ -8,12 +8,10 @@ router.get('/', Auth, (req, res) => {
             user_id: req.session.user_id
         }
     }).then(data => {
-        console.log(data)
         var recipe=[]
         data.forEach(element => {
             recipe.push({id:element.id, name: element.name, ingredients: [{ itemIngredient: element.ingredients.split(',') }], amount: [{ itemAmount: element.amounts.split(',') }], steps: [{ itemStep: element.steps.split(',') }], videoLink: element.videoLink, videoImage:element.videoImage  })
         })
-        console.log(recipe)
         res.render('kitchen', { recipe: recipe, loggedIn: req.session.loggedIn })
     })
 })
