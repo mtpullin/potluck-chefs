@@ -145,8 +145,8 @@ function createIngredient() {
     if (count == 1) {
         submitContainer.innerHTML += `
         <div class ='row'>
-    <h5 class='col'>Submit Recipe</h2>
-    <img id= submit-btn type ='btn' class="submitRecipe prefix modal-trigger" src="/images/icons/recipes.svg" onclick='submit()' style='height:4rem; width:auto'></img>
+    <h5 class='col offset-s4 s6 '></h2>
+    <img id= submit-btn type ='btn' class="submitRecipe col offset-10 s2" src="/images/icons/recipes.svg" onclick='submit()'></img>
     </div>
     `}
     else {
@@ -159,15 +159,19 @@ function createIngredient() {
         recipe.push({ ingredient: ingredient, amount: amount })
     }
     document.getElementById('component').innerHTML += `
-    <div class="input-field">
-        <img class="addRecipe-icon prefix" src="/images/icons/harvest.svg"></img><br>
+    <div class="input-field row">
+        <img class="addRecipe-icon col offset-s1 s3" src="/images/icons/harvest.svg"></img><br>
+        <div class='col s8'>
         <input placeholder='' id="recipe_ingredient${count}" type="text" class="validate"><br>
         <label for="recipe_ingredient">Ingredients</label>
+        </div>
     </div>
-    <div class="input-field">
-        <img class="addRecipe-amount prefix" src="/images/icons/weighing-machine.svg"></img><br>
+    <div class="input-field row">
+        <img class="addRecipe-amount col offset-s1 s3" src="/images/icons/weighing-machine.svg"></img><br>
+        <div class='col s8'>
         <input placeholder="" id="recipe_amount${count}" type="text" class="validate"><br>
         <label for="recipe_amount">Amount</label>
+        </div>
     </div>
 `
     for (var i = 0; i < recipe.length; i++) {
