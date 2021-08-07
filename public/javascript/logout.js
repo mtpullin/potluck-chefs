@@ -12,7 +12,3 @@ async function logOut(event) {
     alert('fail');
   }
 }
-// if(document.querySelector('.logoutBtn'))
-// document.querySelector('.logoutBtn').addEventListener('click', logOut)
-// else
-// document.getElementById('logoutBtn').addEventListener('click', logOut)
