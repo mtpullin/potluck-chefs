@@ -1,0 +1,25 @@
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="user-view">
+            <div class="background">
+            </div>
+            <a><img class="circle" src="/images/icons/chef.svg"></a>
+            {{#userInfo}}
+            <a><span class="white-text name">{{username}}</span></a>
+            <a><span class="white-text email">{{email}}</span></a>
+            {{else}}
+             <a><span class="white-text">You are not logged in</span></a>
+            {{/userInfo}}
+        </div>
+    </li>
+    <li><a class="waves-effect" href="/">View Recipes</a></li>
+    <li><a class="waves-effect" href="/kitchen">My Kitchen</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    {{#if loggedIn}}
+    <li><a class="waves-effect logoutBtn" onclick='logOut(event)'>Log Out</a></li>
+    {{else}}
+    <li><a class="waves-effect" href="/login">Log In</a></li>
+    {{/if}}
+</ul>
