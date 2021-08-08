@@ -62,20 +62,33 @@ body {
   width: 100%;
   max-width: 75px;
 }
-#bottom-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    text-align: center;
-}
-/* .add-ingredient,.add-link,.add-step {
+.nav {
   border-style: dashed;
-  width: fit-content;
-  border-radius: 100px;
-  margin-left:25%;
-} */
+  border-color: black;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+#dashboardBtn,#logoutBtn,#loginNav{
+  border-style: dotted;
+  border-color: black;
+  border-top: none;
+  border-right:none;
+}
+
+.footer-copyright {
+  border-style:dotted;
+}
+
+.page-footer {
+  border-style: dashed;
+}
+.page-footer,.footer-copyright {
+  border-color: black;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+}
 .addRecipe img {
   height: auto;
   width: 100%;
@@ -85,33 +98,25 @@ body {
   margin:0px !important;
   height:auto;
   width: 100%;
-  max-width: 50px;
+  max-width: 40px;
 }
 .displayRecipe-name,.createRecipe-name {
   text-align: center;
 }
-
-@media screen and (max-width: 550px) {
- li,ol{
-   font-size: x-small;
- }
- .yt-video{
-  height: auto;
-  width: 100%;
-  max-width: 50px;
+#navbar-header {
+  font-size:45px;
+  margin-top:10px;
 }
-.collapsible-body{
-  padding:5px;
+.background {
+  background-color: #ff9800;
 }
-.qr-box {
-  height: auto;
-  width: 150%;
-  max-width: 300px;
-}
-h3 {
-  font-size: medium;
-}
-h4,h5 {
-  font-size: smaller;
-}
-}
+@media screen and (max-width: 500px) {
+  #navbar-header {
+    font-size: 25px !important;
+  }
+} 
+@media screen and (max-width: 330px) {
+  #navbar-header {
+    font-size: 15px !important;
+  }
+} 
