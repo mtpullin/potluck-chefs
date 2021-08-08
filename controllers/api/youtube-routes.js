@@ -6,7 +6,7 @@ require('dotenv').config()
 
 router.post('/find_video', (req, res) => {
   video_link = req.body.video_link
-  axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${video_link}&type=video&key=${process.env.YT_API}`)
+  axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${video_link}&type=video&key=${process.env.YT_API}`)
     .then(response => {
       var newData = response.data.items
       var thumbnails = []

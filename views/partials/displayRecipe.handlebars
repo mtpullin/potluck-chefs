@@ -15,15 +15,15 @@
                             <h5 style='text-align:center'>Posted by {{username}} on {{createdAt}} </h5>
                         </h3>
                     </div>
-                    <div class='col s2' style='text-align:center'>
+                    <div class='col s2' style='text-align:center' style='padding:0px;'>
                         <img id='qr-overlay{{id}}' onclick='toggle(this)' class='qr-box'
                             src='/images/icons/qr-code.svg'>
                         <img hidden id='qr-code{{id}}'  class='qr-box'
                             src='https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=https://www.youtube.com/watch?v={{videoLink}}'>
-                            <div id='qr-message-initial{{id}}'>
+                            <div class ='qr-text' id='qr-message-initial{{id}}'>
                             Click for QR Code
                             </div>
-                            <div hidden id='qr-message-final{{id}}'>
+                            <div hidden class ='qr-text' id='qr-message-final{{id}}'>
                             Scan Now
                             </div>
                     </div>
@@ -34,17 +34,16 @@
                             <h5 style='text-align:center'>
                                 Check out the video!
                             </h5>
-                            <div style='text-align: center;'>
-                                
+                            <div style='text-align: center;'>   
                                 <a id="link1" href="https://www.youtube.com/watch?v={{videoLink}}" target="_blank"><img
                                         class='yt-video' src={{videoImage}}></a>
                             </div>
                         </div>
                         <div class='row col s12 m6'>
                             <h5 style='text-align:center'>Ingredients</h5>
-                            <div>
+                            <div class='row ingredient-container' >
                                 {{#each this.ingredients}}
-                                <div class='ingredient-box'>
+                                <div class='ingredient-box col s12'>
                                     <ol class='col ingredientL'>
                                         {{> ingredientList}}
                                     </ol>
@@ -60,9 +59,9 @@
                         </div>
                     </div>
                     {{#each this.steps}}
-                    <div class='directions'>
-                        <h4 style="text-align: center;">Directions to Cook</h4>
-                        <ol>
+                    <div class='directions row'>
+                        <h5 class='col s12' style="text-align: center;">Directions to Cook</h5>
+                        <ol class='stepsListText col s12'>
                             {{> stepList}}
                         </ol>
                     </div>
