@@ -98,7 +98,7 @@ body {
   margin:0px !important;
   height:auto;
   width: 100%;
-  max-width: 50px;
+  max-width: 40px;
 }
 .displayRecipe-name,.createRecipe-name {
   text-align: center;

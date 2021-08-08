@@ -6,10 +6,13 @@ router.get('/', Auth, (req, res) => {
     Recipe.findAll({
         where: {
             user_id: req.session.user_id
+        },
+        include: {
+            model: User
         }
     }).then(data => {
         data.forEach(element => {
-            recipe.push({ id: element.id, name: element.name, ingredients: [{ itemIngredient: element.ingredients.split(',') }], amount: [{ itemAmount: element.amounts.split(',') }], steps: [{ itemStep: element.steps.split(',') }], videoLink: element.videoLink, videoImage: element.videoImage })
+            recipe.push({ id: element.id, name: element.name, ingredients: [{ itemIngredient: element.ingredients.split(',') }], amount: [{ itemAmount: element.amounts.split(',') }], steps: [{ itemStep: element.steps.split(',') }], videoLink: element.videoLink, videoImage: element.videoImage, username: element.user.username, createdAt: new Date(element.createdAt).toLocaleDateString('en-US') })
         })
         User.findAll({
             where: {
