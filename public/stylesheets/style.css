@@ -5,7 +5,7 @@ body {
     background-color: #f1fcff
   }
 
-  main {
+main {
     flex: 1 0 auto;
   }
 
@@ -114,6 +114,7 @@ body {
   padding-right: 5px !important;
   padding-left: 0px !important;
 }
+
 @media screen and (min-width: 1200px) {
   .ingredient-box,.ingredientL{
     margin-right: 0px;
@@ -126,7 +127,7 @@ body {
   .stepsListText {
     font-size: 15px;
   }
-  }
+}
 @media screen and (max-width: 1200px) {
   .qr-text {
     font-size:12px;
