@@ -10,7 +10,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/cooking//favicon-16x16.png">
     <link rel="manifest" href="/images/cooking/site.webmanifest">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://apis.google.com/js/api.js"></script>
     <link rel="stylesheet" href="/stylesheets/materialize.min.css">
     <script src="/javascript/materialize.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,29 +21,45 @@
 <body>
     <div class="wrapper">
         <header>
-            <nav class='navi'>
+            <nav class='nav' style='background-color:#ef8f06 !important;height:75px;'>
                 <div class="nav-wrapper">
-                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <a style='    font-size: 50px;' href="/" class="logo"><img class='brand'
-                            src="/images/cooking/favicon-32x32.png">Potluck Chef</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li class='nav-btn'><a href="/kitchen">Your Kitchen</a></li>
-                        {{#if loggedIn}}
-                        <li class='nav-btn'><a id='logoutBtn' onclick='logOut(event)'>Log Out</a></li>
-                        {{else}}
-                        <li class='nav-btn'><a href="/login">Log In</a></li>
-                        {{/if}}
-                    </ul>
+                    <div class='row'>
+                        <div class='row s8'>
+                            <a href="#" data-target="slide-out" class="sidenav-trigger col"><i
+                                    class="material-icons">menu</i></a>
+                            <img href="/" type='button' style='height:auto;width:100%;max-width: 75px !important;margin-top: 10px;'
+                                src='/images/icons/cooking.svg' class='hide-on-med-and-down col s2'>
+                            <a href="/" id='navbar-header' class='col m8'>The Potluck Chef</a>
+                            <ul id="nav-mobile" class="right col hide-on-med-and-down" style='padding:0px;'>
+                                <li class='nav-btn'><a id='dashboardBtn' href="/kitchen">Your Kitchen</a></li>
+                                {{#if loggedIn}}
+                                <li class='nav-btn'><a id='logoutBtn' onclick='logOut(event)'>Log Out</a></li>
+                                {{else}}
+                                <li class='nav-btn'><a href="/login">Log In</a></li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </nav>
 
             <ul id="slide-out" class="sidenav">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="images/office.jpg">
+                        </div>
+                        <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+                        <a href="#name"><span class="white-text name">John Doe</span></a>
+                        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                    </div>
+                </li>
                 <li><a class="waves-effect" href="/">View Recipes</a></li>
                 <li><a class="waves-effect" href="/kitchen">My Kitchen</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                 {{#if loggedIn}}
+                {{#if loggedIn}}
                 <li><a class="waves-effect logoutBtn" onclick='logOut(event)'>Log Out</a></li>
                 {{else}}
                 <li><a class="waves-effect" href="/login">Log In</a></li>
@@ -59,4 +74,5 @@
 </body>
 <script src="/javascript/logout.js"></script>
 <script src='/javascript/navbar.js'></script>
+
 </html>

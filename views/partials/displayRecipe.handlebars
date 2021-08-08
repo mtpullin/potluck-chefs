@@ -17,10 +17,15 @@
                     <div class='col s2' style='text-align:center'>
                         <img id='qr-overlay{{id}}' onclick='toggle(this)' class='qr-box'
                             src='/images/icons/qr-code.svg'>
-                        <img hidden id='qr-code{{id}}' class='qr-box'
+                        <img hidden id='qr-code{{id}}'  class='qr-box'
                             src='https://api.qrserver.com/v1/create-qr-code/?size=75x75&data=https://www.youtube.com/watch?v={{videoLink}}'>
+                            <div id='qr-message-initial{{id}}'>
+                            Click for QR Code
+                            </div>
+                            <div hidden id='qr-message-final{{id}}'>
+                            Scan Now
+                            </div>
                     </div>
-
                 </div>
                 <div class='collapsible-body'>
                     <div class='row'>

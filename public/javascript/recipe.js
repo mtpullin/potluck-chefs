@@ -246,4 +246,6 @@ async function toggle(btn){
     var id = btn.id.split('overlay')[1]
         btn.setAttribute('hidden','')
         document.getElementById(`qr-code${id}`).removeAttribute('hidden')
+        document.getElementById(`qr-message-initial${id}`).setAttribute('hidden','')
+        document.getElementById(`qr-message-final${id}`).removeAttribute('hidden')
 }

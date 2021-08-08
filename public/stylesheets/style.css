@@ -62,13 +62,32 @@ body {
   width: 100%;
   max-width: 75px;
 }
-#bottom-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    text-align: center;
+.nav {
+  border-style: dashed;
+  border-color: black;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+#dashboardBtn,#logoutBtn{
+  border-style: dotted;
+  border-color: black;
+  border-top: none;
+  border-right:none;
+}
+
+.footer-copyright {
+  border-style:dotted;
+}
+
+.page-footer {
+  border-style: dashed;
+}
+.page-footer,.footer-copyright {
+  border-color: black;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
 }
 .addRecipe img {
   height: auto;
@@ -84,3 +103,17 @@ body {
 .displayRecipe-name,.createRecipe-name {
   text-align: center;
 }
+#navbar-header {
+  font-size:45px;
+  margin-top:10px;
+}
+@media screen and (max-width: 500px) {
+  #navbar-header {
+    font-size: 25px !important;
+  }
+} 
+@media screen and (max-width: 330px) {
+  #navbar-header {
+    font-size: 15px !important;
+  }
+} 
