@@ -17,6 +17,15 @@ var elems = document.querySelectorAll('.recipe')
 var elems2 = document.getElementById('create-recipe')
 var displayRecipe = M.Collapsible.init(elems, options)
 var createRecipe = M.Collapsible.init(elems2, options)
+var elems3 = document.querySelectorAll('.carousel')
+var options2 = {
+    fullWidth: true,
+    indicators: true
+}
+var instanceC = M.Carousel.init({
+    fullWidth: true,
+    indicators: true
+})
 
 async function addLink() {
     var url = []
@@ -53,7 +62,7 @@ async function addLink() {
                 var newimg1 = document.createElement('img')
                  var newA = document.createElement('a')
                  
-                newCheckContainer.setAttribute('class', 'col')
+                newCheckContainer.setAttribute('class', 'col s4 m3')
                 newCheckContainer.setAttribute('id', `ytContainer${count}`)
                 newCheckInput.setAttribute('id', `ytInput${count}`)
                 newCheckSpan.setAttribute('id', `span${count}`)
@@ -65,14 +74,15 @@ async function addLink() {
                 newA.setAttribute('id', `link${count}`)
                 newA.setAttribute('href', `https://www.youtube.com/watch?v=${element.videoId}`)
                 newA.setAttribute('target', '_blank')
-                newA.setAttribute('class', 'yt-vide')
+                newA.setAttribute('class', 'yt-video')
                 count++
                 document.getElementById('yt-video-link').appendChild(newCheckContainer)
+                newCheckContainer.appendChild(newA)
                 newCheckContainer.appendChild(newCheckLabel)
                 newCheckLabel.appendChild(newCheckInput)
                 newCheckLabel.appendChild(newCheckSpan)
-                newCheckContainer.appendChild(newA)
                 newimg1.setAttribute('src', `${element.thumbnails}`)
+                newimg1.setAttribute('style', `max-width:fit-content;`)
                 newA.appendChild(newimg1)
                 checkboxes.push(newCheckInput)
                 link.push(newA)

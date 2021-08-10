@@ -5,7 +5,7 @@ body {
     background-color: #f1fcff
   }
 
-  main {
+main {
     flex: 1 0 auto;
   }
 
@@ -110,6 +110,32 @@ body {
 .background {
   background-color: #ff9800;
 }
+.ingredientL,.ingredientR {
+  padding-right: 5px !important;
+  padding-left: 0px !important;
+}
+
+@media screen and (min-width: 1200px) {
+  .ingredient-box,.ingredientL{
+    margin-right: 0px;
+    padding-right: 0px;
+    font-size: 20px;
+  }
+  .ingredient-container{
+    margin-left: 10px !important;
+  }
+  .stepsListText {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .qr-text {
+    font-size:12px;
+  }
+  .ingredient-container{
+    margin-left: 10px !important;
+  }
+  }
 @media screen and (max-width: 500px) {
   #navbar-header {
     font-size: 25px !important;
